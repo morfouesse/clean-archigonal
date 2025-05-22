@@ -10,6 +10,6 @@ export interface Survey {
     questions : Question[]
 }
 export interface SurveyRepository{
-    getSurveys() : Promise<void>
-    createSurvey() : Promise<Survey>
+    getSurveys() : Promise<Survey[]>
+    createSurvey() : Promise<void>
 }
