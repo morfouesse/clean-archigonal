@@ -1,9 +1,12 @@
 <template>
-  <v-card class="mx-auto" width="300">
+  <v-card elevation="3" class="mx-auto" width="300">
+    <template v-slot:title>
+      <span class="title">{{ survey.label }}</span>
+    </template>
     <v-list v-model:opened="open">
       <v-list-group>
         <template v-slot:activator="{ props }">
-          <v-list-item v-bind="props" :title="survey.label"></v-list-item>
+          <v-list-item v-bind="props" class="title" title="Voir les questions"></v-list-item>
         </template>
 
         <v-list-item
@@ -13,9 +16,9 @@
         ></v-list-item>
       </v-list-group>
     </v-list>
-    <template v-slot:actions>
+    <v-card-actions>
       <v-btn variant="tonal">joué</v-btn>
-    </template>
+    </v-card-actions>
   </v-card>
 </template>
 <script setup lang="ts">

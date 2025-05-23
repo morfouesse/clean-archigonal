@@ -5,7 +5,19 @@
 }
 
 .mb-sm {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.mb-md {
+  margin-bottom: 15px;
+}
+.mb-lg {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: large;
+  font-weight: bold;
 }
 
 body {
