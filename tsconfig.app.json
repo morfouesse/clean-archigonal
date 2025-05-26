@@ -27,7 +27,6 @@
       "@/*": ["./src/*"]
     },
     "esModuleInterop": true,
-    "types": ["vitest/globals"],
     "experimentalDecorators": true
   },
   "extends": "@vue/tsconfig/tsconfig.dom.json",
