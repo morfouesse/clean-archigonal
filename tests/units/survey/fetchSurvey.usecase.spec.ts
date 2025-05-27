@@ -12,6 +12,8 @@ describe('Survey usecase test', () => {
     const fetchSurveyUsecase = new FetchSurveyUsecase(surveysMock)
 
     //WHEN
+    // on utilise l'impl de FetchSurveyPresenter car on ne fait que du mappage,
+    // un peu comme mapstuct, on ne le mock pas et on ne le testera pas unitairement
     await fetchSurveyUsecase.execute(new FetchSurveyPresenterImpl(expectation))
     //THEN
     async function expectation(vm: SurveyViewModel[]) {

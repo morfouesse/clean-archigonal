@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "test:unit": "vitest",
-    "test:e2e": "playwright test",
+    "test:unit": "vitest run --config vitest.units.config.ts",
+    "test:unit:coverage": "vitest run --config vitest.units.config.ts --coverage",
+    "test:component": "vitest run --config vitest.components.config.ts",
+    "test:component:coverage": "vitest run --config vitest.components.config.ts --coverage",
     "test:coverage": "vitest run --coverage",
     "build": "vite build",
     "type-check": "vue-tsc --build",
