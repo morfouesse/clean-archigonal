@@ -8,7 +8,7 @@ export default mergeConfig(
   defineConfig({
     test: {
       globals: true,
-      environment: 'jsdom',
+      environment: 'jsdom', // evite une erreur
       include: ['tests/**/*.spec.ts'],
       exclude: [...configDefaults.exclude, 'tests/e2e/*.spec.ts'],
       sequence: { shuffle: true },
