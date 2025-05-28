@@ -23,7 +23,6 @@
 </template>
 <script setup lang="ts">
 import type { SurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
-import { ref } from 'vue'
 
 const { survey } = defineProps<{
   survey: SurveyViewModel
