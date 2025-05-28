@@ -10,6 +10,8 @@ describe('Survey usecase test', () => {
     //GIVEN
     const surveysMock = new SurveyRepositoryMock()
     const fetchSurveyUsecase = new FetchSurveyUsecase(surveysMock)
+    // on ne modifie pas l'objet depuis le repository, donc je met le même mock
+    const expected = surveysMock.getSurveys()
 
     //WHEN
     // on utilise l'impl de FetchSurveyPresenter car on ne fait que du mappage,
@@ -17,8 +19,7 @@ describe('Survey usecase test', () => {
     await fetchSurveyUsecase.execute(new FetchSurveyPresenterImpl(expectation))
     //THEN
     async function expectation(vm: SurveyViewModel[]) {
-      // on ne modifie pas l'objet depuis le repository, donc je met le même mock
-      expect(vm).toStrictEqual<Survey[]>(await surveysMock.getSurveys())
+      expect(vm).toStrictEqual<Survey[]>(await expected)
     }
   })
 })
