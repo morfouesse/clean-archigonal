@@ -5,6 +5,7 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
+      name: 'units',
       include: ['tests/units/**/*.{test,spec}.{js,jsx,ts,tsx}'],
       coverage: {
         provider: 'istanbul',
