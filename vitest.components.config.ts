@@ -18,3 +18,18 @@ export default mergeConfig(
     },
   }),
 )
+
+//    coverage: {
+//  provider: 'istanbul',
+//  reporter: ['text', 'json', 'html'],
+//  reportsDirectory: './coverage/components',
+// include: ['src/**/*.vue'],
+// à voire
+//exclude: [
+//  '**/router/index.ts',
+//   '**/main.ts',
+//   'src/vite-env.d.ts',
+//  'tests/**/*.spec.ts',
+//   'src/**/*.vue',
+// ],
+// },
