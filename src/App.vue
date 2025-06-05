@@ -4,9 +4,11 @@
       <NavBar />
     </header>
     <body>
-      <main>
-        <RouterView />
-      </main>
+      <v-main>
+        <v-container>
+          <RouterView />
+        </v-container>
+      </v-main>
     </body>
     <footer v-if="$vuetify.display.xs">
       <BottomAppBar />

@@ -10,10 +10,21 @@
         </template>
 
         <v-list-item
-          v-for="(question, i) in survey.questions"
-          :key="i"
+          v-for="(question, questionIndex) in survey.questions"
+          :key="questionIndex"
           :title="question.label"
-        ></v-list-item>
+        >
+          <v-list-group>
+            <template v-slot:activator="{ props }">
+              <v-list-item v-bind="props" class="title" title="Voir les réponses"></v-list-item>
+            </template>
+            <v-list-item
+              v-for="(answer, answerIndex) in question.answers"
+              :key="answerIndex"
+              :title="answer.label"
+            ></v-list-item>
+          </v-list-group>
+        </v-list-item>
       </v-list-group>
     </v-list>
     <v-card-actions>

@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+.m-md {
+  margin: 15px;
+}
+
+.p-md {
+  padding: 15px;
+}
+
 .mb-sm {
   margin-bottom: 10px;
 }
@@ -20,15 +28,26 @@
   font-weight: bold;
 }
 
+.flex-row {
+  display: flex;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  margin: 0 0 3rem;
+  font-size: 38px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
 body {
   color: var(--text-color);
   background-color: var(--background-color);
   line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
+  display: block;
   font-family:
     Inter,
     -apple-system,
