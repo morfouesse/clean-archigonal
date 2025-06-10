@@ -1,4 +1,4 @@
-import type { Survey, SurveyRepository } from '@/domains/survey/ports/survey.repository'
+import type { FetchSurvey, SurveyRepository } from '@/domains/survey/ports/survey.repository'
 
 export class SurveyRepositoryMock implements SurveyRepository {
   private readonly _surveys = [
@@ -58,9 +58,9 @@ export class SurveyRepositoryMock implements SurveyRepository {
     },
   ]
 
-  constructor(private readonly surveys: Survey[] = this._surveys) {}
+  constructor(private readonly surveys: FetchSurvey[] = this._surveys) {}
 
-  getSurveys(): Promise<Survey[]> {
+  getSurveys(): Promise<FetchSurvey[]> {
     return Promise.resolve(this.surveys)
   }
   createSurvey(): Promise<void> {

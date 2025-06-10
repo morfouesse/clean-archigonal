@@ -1,10 +1,11 @@
-import type { FetchSurveyPresenter, SurveyViewModel } from '../ports/fetchSurvey.presenter'
-import type { Survey } from '../ports/survey.repository'
+import type { FetchSurveyPresenter, FetchSurveyViewModel } from '../ports/fetchSurvey.presenter'
+import type { FetchSurvey } from '../ports/fetchSurvey.usecase'
 
 export class FetchSurveyPresenterImpl implements FetchSurveyPresenter {
-  constructor(private readonly callback: (viewModel: SurveyViewModel[]) => void) {}
-  presente(surveys: Survey[]): void {
-    const surveysViewModel: SurveyViewModel[] = surveys.map((survey) => ({ ...survey }))
+  constructor(private readonly callback: (viewModel: FetchSurveyViewModel[]) => void) {}
+
+  presente(surveys: FetchSurvey[]): void {
+    const surveysViewModel: FetchSurveyViewModel[] = surveys.map((survey) => ({ ...survey }))
     this.callback(surveysViewModel)
   }
 }

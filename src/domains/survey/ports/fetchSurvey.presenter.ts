@@ -1,17 +1,17 @@
-import type { Survey } from './survey.repository'
+import type { FetchSurvey } from './survey.repository'
 
-export interface AnswerViewModel {
+export interface FetchAnswerViewModel {
   label: string
 }
-export interface QuestionViewModel {
+export interface FetchQuestionViewModel {
   label: string
-  answers: AnswerViewModel[]
+  answers: FetchAnswerViewModel[]
 }
-export interface SurveyViewModel {
+export interface FetchSurveyViewModel {
   label: string
-  questions: QuestionViewModel[]
+  questions: FetchQuestionViewModel[]
 }
 
 export interface FetchSurveyPresenter {
-  presente(surveys: Survey[])
+  presente(surveys: FetchSurvey[])
 }

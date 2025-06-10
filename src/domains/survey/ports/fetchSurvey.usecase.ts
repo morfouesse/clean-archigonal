@@ -1,6 +1,18 @@
 import type { FetchSurveyPresenter } from './fetchSurvey.presenter'
 import type { SurveyRepository } from './survey.repository'
 
+export interface FetchAnswer {
+  label: string
+}
+export interface FetchQuestion {
+  label: string
+  answers: FetchAnswer[]
+}
+export interface FetchSurvey {
+  label: string
+  questions: FetchQuestion[]
+}
+
 export class FetchSurveyUsecase {
   private readonly _surveyRepository: SurveyRepository
 

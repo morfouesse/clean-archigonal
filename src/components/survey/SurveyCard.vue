@@ -33,9 +33,9 @@
   </v-card>
 </template>
 <script setup lang="ts">
-import type { SurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
+import type { FetchSurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
 
 const { survey } = defineProps<{
-  survey: SurveyViewModel
+  survey: FetchSurveyViewModel
 }>()
 </script>

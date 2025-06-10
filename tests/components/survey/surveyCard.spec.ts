@@ -1,12 +1,12 @@
 import SurveyCard from '@/components/survey/SurveyCard.vue'
-import type { SurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
+import type { FetchSurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 
 describe('Survey card', () => {
   // https://dev.to/jacobandrewsky/testing-vue-components-with-vitest-5c21
   it('snapshot', () => {
-    const survey: SurveyViewModel = {
+    const survey: FetchSurveyViewModel = {
       label: 'les tests',
       questions: [
         {

@@ -49,7 +49,44 @@ exports[`Survey card > snapshot 1`] = `
             <div class="v-list-item__content" data-no-activator="">
               <div class="v-list-item-title">Faut-il faire des tests ?</div>
               <!---->
-              <!---->
+              <div class="v-list-group">
+                <div class="v-list-item v-list-item--link v-theme--light v-list-item--density-default v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header title" tabindex="-2" id="v-list-group--id-Symbol(nested item)"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span>
+                  <!---->
+                  <div class="v-list-item__content" data-no-activator="">
+                    <div class="v-list-item-title">Voir les réponses</div>
+                    <!---->
+                    <!---->
+                  </div>
+                  <div class="v-list-item__append"><i class="mdi-chevron-down mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true" density="default"></i>
+                    <!---->
+                    <div class="v-list-item__spacer"></div>
+                  </div>
+                </div>
+                <transition-stub name="" appear="false" persisted="false" css="false">
+                  <div class="v-list-group__items" role="group" aria-labelledby="v-list-group--id-Symbol(nested item)" style="display: none;">
+                    <div class="v-list-item v-theme--light v-list-item--density-default v-list-item--one-line rounded-0 v-list-item--variant-text">
+                      <!----><span class="v-list-item__underlay"></span>
+                      <!---->
+                      <div class="v-list-item__content" data-no-activator="">
+                        <div class="v-list-item-title">OUIIIII</div>
+                        <!---->
+                        <!---->
+                      </div>
+                      <!---->
+                    </div>
+                    <div class="v-list-item v-theme--light v-list-item--density-default v-list-item--one-line rounded-0 v-list-item--variant-text">
+                      <!----><span class="v-list-item__underlay"></span>
+                      <!---->
+                      <div class="v-list-item__content" data-no-activator="">
+                        <div class="v-list-item-title">heuuu, connait pas</div>
+                        <!---->
+                        <!---->
+                      </div>
+                      <!---->
+                    </div>
+                  </div>
+                </transition-stub>
+              </div>
             </div>
             <!---->
           </div>
@@ -59,7 +96,44 @@ exports[`Survey card > snapshot 1`] = `
             <div class="v-list-item__content" data-no-activator="">
               <div class="v-list-item-title">Quelles tests en priorité ?</div>
               <!---->
-              <!---->
+              <div class="v-list-group">
+                <div class="v-list-item v-list-item--link v-theme--light v-list-item--density-default v-list-item--one-line rounded-0 v-list-item--variant-text v-list-group__header title" tabindex="-2" id="v-list-group--id-Symbol(nested item)"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span>
+                  <!---->
+                  <div class="v-list-item__content" data-no-activator="">
+                    <div class="v-list-item-title">Voir les réponses</div>
+                    <!---->
+                    <!---->
+                  </div>
+                  <div class="v-list-item__append"><i class="mdi-chevron-down mdi v-icon notranslate v-theme--light v-icon--size-default" aria-hidden="true" density="default"></i>
+                    <!---->
+                    <div class="v-list-item__spacer"></div>
+                  </div>
+                </div>
+                <transition-stub name="" appear="false" persisted="false" css="false">
+                  <div class="v-list-group__items" role="group" aria-labelledby="v-list-group--id-Symbol(nested item)" style="display: none;">
+                    <div class="v-list-item v-theme--light v-list-item--density-default v-list-item--one-line rounded-0 v-list-item--variant-text">
+                      <!----><span class="v-list-item__underlay"></span>
+                      <!---->
+                      <div class="v-list-item__content" data-no-activator="">
+                        <div class="v-list-item-title">les tests unitaires</div>
+                        <!---->
+                        <!---->
+                      </div>
+                      <!---->
+                    </div>
+                    <div class="v-list-item v-theme--light v-list-item--density-default v-list-item--one-line rounded-0 v-list-item--variant-text">
+                      <!----><span class="v-list-item__underlay"></span>
+                      <!---->
+                      <div class="v-list-item__content" data-no-activator="">
+                        <div class="v-list-item-title">les tests E2E</div>
+                        <!---->
+                        <!---->
+                      </div>
+                      <!---->
+                    </div>
+                  </div>
+                </transition-stub>
+              </div>
             </div>
             <!---->
           </div>

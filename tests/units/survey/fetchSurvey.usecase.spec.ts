@@ -1,9 +1,8 @@
-import { FetchSurveyUsecase } from '@/domains/survey/ports/fetchSurvey.usecase'
+import { FetchSurveyUsecase, type FetchSurvey } from '@/domains/survey/ports/fetchSurvey.usecase'
 import { SurveyRepositoryMock } from './adapters/survey.repository.mock'
-import type { Survey } from '@/domains/survey/ports/survey.repository'
 import { FetchSurveyPresenterImpl } from '@/domains/survey/adapters/fetchSurvey.presenter.impl'
 import { expect, describe, it } from 'vitest'
-import type { SurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
+import type { FetchSurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
 
 describe('Survey usecase test', () => {
   it('Get survey list', async () => {
@@ -14,12 +13,11 @@ describe('Survey usecase test', () => {
     const expected = surveysMock.getSurveys()
 
     //WHEN
-    // on utilise l'impl de FetchSurveyPresenter car on ne fait que du mappage,
-    // un peu comme mapstuct, on ne le mock pas et on ne le testera pas unitairement
+    // on ne teste pas le mappage
     await fetchSurveyUsecase.execute(new FetchSurveyPresenterImpl(expectation))
     //THEN
-    async function expectation(vm: SurveyViewModel[]) {
-      expect(vm).toStrictEqual<Survey[]>(await expected)
+    async function expectation(vm: FetchSurveyViewModel[]) {
+      expect(vm).toStrictEqual<FetchSurvey[]>(await expected)
     }
   })
 })
