@@ -1,5 +1,5 @@
-import type { CreateSurvey } from '../ports/createSurvey.usecase'
-import type { FetchSurvey } from '../ports/fetchSurvey.usecase'
+import type { CreateSurvey } from '../createSurvey.usecase'
+import type { FetchSurvey } from '../fetchSurvey.usecase'
 import type { SurveyRepository } from '../ports/survey.repository'
 
 export interface FetchAnswerApiModel {

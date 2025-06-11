@@ -1,5 +1,5 @@
-import type { FetchSurveyPresenter } from './fetchSurvey.presenter'
-import type { SurveyRepository } from './survey.repository'
+import type { FetchSurveyPresenter } from './ports/fetchSurvey.presenter'
+import type { SurveyRepository } from './ports/survey.repository'
 
 export interface FetchAnswer {
   label: string

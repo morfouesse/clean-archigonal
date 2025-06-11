@@ -63,16 +63,25 @@
     <p class="red" v-if="!isFormValid">Tout les champs sont obligatoires</p>
   </v-col>
   <v-btn @click="nextQuestion" block variant="tonal">Crée la prochaine question</v-btn>
+  <div class="pt-8">
+    <v-btn type="submit" @click="createSurvey" color="success" variant="flat"
+      >Crée le questionnaire</v-btn
+    >
+  </div>
 </template>
 <script setup lang="ts">
-import { useHandleQuestionsSurveyForm } from '@/composables/useHandleQuestionsSurveyForm'
-import { computed, ref, type Ref } from 'vue'
+import { CreateSurveyPresenterImpl } from '@/domains/survey/adapters/createSurvey.presenter.impl'
+import { SurveyRepositoryFetch } from '@/domains/survey/adapters/survey.repository.fetch'
+import {
+  CreateSurveyUsecase,
+  type CreateQuestion,
+  type CreateSurvey,
+} from '@/domains/survey/createSurvey.usecase'
+import router from '@/router'
+import { computed, ref } from 'vue'
 
 const { surveyName } = defineProps<{
   surveyName?: string
-}>()
-const emit = defineEmits<{
-  questionCounter: [value: number]
 }>()
 
 const questionName = ref<string>()
@@ -85,10 +94,10 @@ const isGoodAnswerTwo = ref<boolean>()
 const isGoodAnswerThree = ref<boolean>()
 const isGoodAnswerFour = ref<boolean>()
 const isFormValid = ref<boolean>(true)
-const questionCounter = ref<number>(1)
+const buildSurvey = ref<CreateSurvey>()
+const questionsAndAnswers = ref<CreateQuestion[]>([])
 
 const haveSurveyAndQuestion = computed(() => surveyName && questionName.value)
-const { buildSurvey, getSurvey } = useHandleQuestionsSurveyForm()
 
 const handleFormValidation = (): void => {
   if (
@@ -108,23 +117,70 @@ const handleFormValidation = (): void => {
 const nextQuestion = (): void => {
   handleFormValidation()
   if (isFormValid.value) {
-    buildSurvey(
-      surveyName!,
-      questionName as Ref<string>,
-      answerOne as Ref<string>,
-      answerTwo as Ref<string>,
-      answerThree as Ref<string>,
-      answerFour as Ref<string>,
-      isGoodAnswerOne as Ref<boolean>,
-      isGoodAnswerTwo as Ref<boolean>,
-      isGoodAnswerThree as Ref<boolean>,
-      isGoodAnswerFour as Ref<boolean>,
-    )
-
-    console.log(getSurvey.value)
-
-    emit('questionCounter', questionCounter.value) // pas utile
+    const questionAnswer: CreateQuestion = {
+      label: questionName.value!,
+      answers: [
+        {
+          label: answerOne.value!,
+          isGoodAnswer: isGoodAnswerOne.value!,
+        },
+        {
+          label: answerTwo.value!,
+          isGoodAnswer: isGoodAnswerTwo.value!,
+        },
+        {
+          label: answerThree.value!,
+          isGoodAnswer: isGoodAnswerThree.value!,
+        },
+        {
+          label: answerFour.value!,
+          isGoodAnswer: isGoodAnswerFour.value!,
+        },
+      ],
+    }
+    questionsAndAnswers.value = [...questionsAndAnswers.value, questionAnswer]
   }
+}
+const createSurvey = async (event: SubmitEvent): Promise<void> => {
+  // si que une seul question alors refus du form
+
+  event.preventDefault()
+
+  buildSurvey.value = {
+    label: surveyName!,
+    questions: questionsAndAnswers.value,
+  }
+  const lastQuestionAnswers: CreateQuestion = {
+    label: questionName.value!,
+    answers: [
+      {
+        label: answerOne.value!,
+        isGoodAnswer: isGoodAnswerOne.value!,
+      },
+      {
+        label: answerTwo.value!,
+        isGoodAnswer: isGoodAnswerTwo.value!,
+      },
+      {
+        label: answerThree.value!,
+        isGoodAnswer: isGoodAnswerThree.value!,
+      },
+      {
+        label: answerFour.value!,
+        isGoodAnswer: isGoodAnswerFour.value!,
+      },
+    ],
+  }
+
+  const createSurveyUsecase = new CreateSurveyUsecase(new SurveyRepositoryFetch())
+  createSurveyUsecase.execute(
+    new CreateSurveyPresenterImpl((vm) => {
+      router.push({ name: vm.route })
+    }),
+    buildSurvey.value,
+    questionsAndAnswers.value,
+    lastQuestionAnswers,
+  )
 }
 </script>
 <style scoped>

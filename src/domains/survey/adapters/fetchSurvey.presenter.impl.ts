@@ -1,5 +1,5 @@
 import type { FetchSurveyPresenter, FetchSurveyViewModel } from '../ports/fetchSurvey.presenter'
-import type { FetchSurvey } from '../ports/fetchSurvey.usecase'
+import type { FetchSurvey } from '../fetchSurvey.usecase'
 
 export class FetchSurveyPresenterImpl implements FetchSurveyPresenter {
   constructor(private readonly callback: (viewModel: FetchSurveyViewModel[]) => void) {}

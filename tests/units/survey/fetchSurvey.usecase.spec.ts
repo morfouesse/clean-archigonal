@@ -1,4 +1,4 @@
-import { FetchSurveyUsecase, type FetchSurvey } from '@/domains/survey/ports/fetchSurvey.usecase'
+import { FetchSurveyUsecase, type FetchSurvey } from '@/domains/survey/fetchSurvey.usecase'
 import { SurveyRepositoryMock } from './adapters/survey.repository.mock'
 import { FetchSurveyPresenterImpl } from '@/domains/survey/adapters/fetchSurvey.presenter.impl'
 import { expect, describe, it } from 'vitest'

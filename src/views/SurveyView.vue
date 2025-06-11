@@ -7,7 +7,7 @@ import SurveyCard from '@/components/survey/SurveyCard.vue'
 import { FetchSurveyPresenterImpl } from '@/domains/survey/adapters/fetchSurvey.presenter.impl'
 import { SurveyRepositoryFetch } from '@/domains/survey/adapters/survey.repository.fetch'
 import type { FetchSurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
-import { FetchSurveyUsecase } from '@/domains/survey/ports/fetchSurvey.usecase'
+import { FetchSurveyUsecase } from '@/domains/survey/fetchSurvey.usecase'
 import { onMounted, ref } from 'vue'
 
 const surveys = ref<FetchSurveyViewModel[]>([])
