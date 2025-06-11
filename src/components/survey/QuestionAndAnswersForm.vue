@@ -178,7 +178,6 @@ const createSurvey = async (event: SubmitEvent): Promise<void> => {
       router.push({ name: vm.route })
     }),
     buildSurvey.value,
-    questionsAndAnswers.value,
     lastQuestionAnswers,
   )
 }

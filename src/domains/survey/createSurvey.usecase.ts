@@ -24,13 +24,13 @@ export class CreateSurveyUsecase {
   execute(
     createSurveyPresenter: CreateSurveyPresenter,
     createSurvey: CreateSurvey,
-    questionsAndAnswers: CreateQuestion[],
     lastQuestionAnswers: CreateQuestion,
-  ) {
-    if (!deepEqual(questionsAndAnswers[questionsAndAnswers.length - 1], lastQuestionAnswers)) {
-      questionsAndAnswers = [...questionsAndAnswers, lastQuestionAnswers]
+  ): void {
+    if (
+      !deepEqual(createSurvey.questions[createSurvey.questions.length - 1], lastQuestionAnswers)
+    ) {
+      createSurvey.questions = [...createSurvey.questions, lastQuestionAnswers]
     }
-    createSurvey.questions = questionsAndAnswers
     this._surveyRepository.createSurvey(createSurvey)
     createSurveyPresenter.presente()
   }

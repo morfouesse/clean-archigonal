@@ -1,4 +1,4 @@
-import type { FetchSurvey } from './survey.repository'
+import type { FetchSurvey } from '../fetchSurvey.usecase'
 
 export interface FetchAnswerViewModel {
   label: string

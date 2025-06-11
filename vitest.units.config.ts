@@ -5,6 +5,7 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
+      environment: 'jsdom', // evite des erreurs horrible
       name: 'units',
       include: ['tests/units/**/*.{test,spec}.{js,jsx,ts,tsx}'],
       coverage: {

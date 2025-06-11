@@ -1,5 +1,3 @@
-import type { FetchSurvey } from './survey.repository'
-
 export interface CreateAnswerViewModel {
   label: string
   isGoodAnswer: boolean

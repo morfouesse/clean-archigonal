@@ -1,5 +1,5 @@
 import type { CreateSurvey } from '../createSurvey.usecase'
-import type { FetchSurvey } from './fetchSurvey.usecase'
+import type { FetchSurvey } from '../fetchSurvey.usecase'
 
 export interface SurveyRepository {
   getSurveys(): Promise<FetchSurvey[]>
