@@ -48,6 +48,8 @@
     "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vitest": "^3.1.4",
-    "vue-tsc": "^2.2.8"
+    "vue-tsc": "^2.2.8",
+    "lighthouse": "^12.6.0",
+    "playwright-lighthouse": "^4.0.0"
   }
 }

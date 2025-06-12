@@ -3,10 +3,15 @@
     <template v-slot:title>
       <span class="title">{{ survey.label }}</span>
     </template>
-    <v-list>
+    <v-list role="list">
       <v-list-group>
         <template v-slot:activator="{ props }">
-          <v-list-item v-bind="props" class="title" title="Voir les questions"></v-list-item>
+          <v-list-item
+            role="listitem"
+            v-bind="props"
+            class="title"
+            title="Voir les questions"
+          ></v-list-item>
         </template>
 
         <v-list-item
@@ -16,9 +21,15 @@
         >
           <v-list-group>
             <template v-slot:activator="{ props }">
-              <v-list-item v-bind="props" class="title" title="Voir les réponses"></v-list-item>
+              <v-list-item
+                role="listitem"
+                v-bind="props"
+                class="title"
+                title="Voir les réponses"
+              ></v-list-item>
             </template>
             <v-list-item
+              role="listitem"
               v-for="(answer, answerIndex) in question.answers"
               :key="answerIndex"
               :title="answer.label"
