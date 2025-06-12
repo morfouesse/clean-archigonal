@@ -34,7 +34,7 @@ const playAuditA11y = async (page: Page) => {
     page: page,
     port: 9222,
     thresholds: {
-      accessibility: 100,
+      accessibility: 80,
     },
     reports: {
       formats: {

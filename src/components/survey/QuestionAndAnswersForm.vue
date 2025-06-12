@@ -139,6 +139,15 @@ const nextQuestion = (): void => {
       ],
     }
     questionsAndAnswers.value = [...questionsAndAnswers.value, questionAnswer]
+    questionName.value = ''
+    answerOne.value = ''
+    answerTwo.value = ''
+    answerThree.value = ''
+    answerFour.value = ''
+    isGoodAnswerOne.value = false
+    isGoodAnswerTwo.value = false
+    isGoodAnswerThree.value = false
+    isGoodAnswerFour.value = false
   }
 }
 const createSurvey = async (event: SubmitEvent): Promise<void> => {
