@@ -4,7 +4,9 @@ test.describe('Survey', () => {
   test('Should create a survey and redirect to survey list', async ({ page }) => {
     await page.goto('/')
 
-    await expect(page.getByText('Petit projet de questionnaire en clean archigonale')).toBeVisible()
+    await expect(
+      page.getByText('Petit projet de questionnaire en clean archigonale', { exact: true }),
+    ).toBeVisible()
     await expect(page.getByRole('button', { name: 'joué' })).toHaveCount(2)
 
     await page.getByRole('button', { name: 'Crée ton questionnaire' }).click()
