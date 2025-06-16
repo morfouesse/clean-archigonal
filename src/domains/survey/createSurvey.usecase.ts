@@ -26,9 +26,11 @@ export class CreateSurveyUsecase {
     createSurvey: CreateSurvey,
     lastQuestionAnswers: CreateQuestion,
   ): void {
-    if (
-      !deepEqual(createSurvey.questions[createSurvey.questions.length - 1], lastQuestionAnswers)
-    ) {
+    const isNotSameQuestionAnswers = !deepEqual(
+      createSurvey.questions[createSurvey.questions.length - 1],
+      lastQuestionAnswers,
+    )
+    if (isNotSameQuestionAnswers) {
       createSurvey.questions = [...createSurvey.questions, lastQuestionAnswers]
     }
     this._surveyRepository.createSurvey(createSurvey)
