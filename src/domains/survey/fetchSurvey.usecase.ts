@@ -1,3 +1,4 @@
+import type { SurveyState } from './adapters/survey.repository.fetch'
 import type { FetchSurveyPresenter } from './ports/fetchSurvey.presenter'
 import type { SurveyRepository } from './ports/survey.repository'
 
@@ -10,6 +11,7 @@ export interface FetchQuestion {
 }
 export interface FetchSurvey {
   label: string
+  state: SurveyState
   questions: FetchQuestion[]
 }
 

@@ -11,7 +11,13 @@ export interface FetchQuestionApiModel {
 }
 export interface FetchSurveyApiModel {
   label: string
+  state: SurveyState
   questions: FetchQuestionApiModel[]
+}
+
+export enum SurveyState {
+  IN_PROGRESS,
+  EXPIRE,
 }
 
 export class SurveyRepositoryFetch implements SurveyRepository {
@@ -19,6 +25,7 @@ export class SurveyRepositoryFetch implements SurveyRepository {
     const surveysApiModel: FetchSurveyApiModel[] = [
       {
         label: 'les tests',
+        state: SurveyState.IN_PROGRESS,
         questions: [
           {
             label: 'Faut-il faire des tests ?',
@@ -58,6 +65,7 @@ export class SurveyRepositoryFetch implements SurveyRepository {
       },
       {
         label: 'les fruits',
+        state: SurveyState.EXPIRE,
         questions: [
           {
             label: 'La tomate est un fruit ?',

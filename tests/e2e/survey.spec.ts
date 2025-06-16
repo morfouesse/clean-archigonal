@@ -7,7 +7,7 @@ test.describe('Survey', () => {
     await expect(
       page.getByText('Petit projet de questionnaire en clean archigonale', { exact: true }),
     ).toBeVisible()
-    await expect(page.getByRole('button', { name: 'joué' })).toHaveCount(2)
+    await expect(page.getByRole('button', { name: 'joué' })).toHaveCount(1)
 
     await page.getByRole('button', { name: 'Crée ton questionnaire' }).click()
     await expect(page.locator('h1', { hasText: 'Crée ton questionnaire' })).toBeVisible()

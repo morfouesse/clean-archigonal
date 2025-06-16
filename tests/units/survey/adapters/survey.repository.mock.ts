@@ -1,3 +1,4 @@
+import { SurveyState } from '@/domains/survey/adapters/survey.repository.fetch'
 import type { CreateQuestion, CreateSurvey } from '@/domains/survey/createSurvey.usecase'
 import type { FetchSurvey } from '@/domains/survey/fetchSurvey.usecase'
 import type { SurveyRepository } from '@/domains/survey/ports/survey.repository'
@@ -51,9 +52,10 @@ export const lastQuestionAnswers: CreateQuestion = {
   ],
 }
 export class SurveyRepositoryMock implements SurveyRepository {
-  private readonly _surveys = [
+  private readonly _surveys: FetchSurvey[] = [
     {
       label: 'les tests',
+      state: SurveyState.IN_PROGRESS,
       questions: [
         {
           label: 'Faut-il faire des tests ?',
@@ -93,6 +95,7 @@ export class SurveyRepositoryMock implements SurveyRepository {
     },
     {
       label: 'les fruits',
+      state: SurveyState.EXPIRE,
       questions: [
         {
           label: 'La tomate est un fruit ?',
