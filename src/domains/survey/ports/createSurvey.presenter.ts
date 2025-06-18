@@ -1,16 +1,25 @@
 export interface CreateAnswerViewModel {
-  label: string
-  isGoodAnswer: boolean
+  answerOne: string
+  answerTwo: string
+  answerThree: string
+  answerFour: string
+  isGoodAnswerOne: boolean
+  isGoodAnswerTwo: boolean
+  isGoodAnswerThree: boolean
+  isGoodAnswerFour: boolean
 }
 export interface CreateQuestionViewModel {
   label: string
-  answers: CreateAnswerViewModel[]
+  answer: CreateAnswerViewModel
 }
 export interface CreateSurveyViewModel {
   label: string
   questions: CreateQuestionViewModel[]
 }
+export interface RedirectToHomeViewModel {
+  route: string
+}
 
 export interface CreateSurveyPresenter {
-  presente()
+  presente(isFormValid: boolean)
 }

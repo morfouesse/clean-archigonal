@@ -1,34 +1,32 @@
 import { SurveyState } from '@/domains/survey/adapters/survey.repository.fetch'
-import type { CreateQuestion, CreateSurvey } from '@/domains/survey/createSurvey.usecase'
+import type { CreateQuestion } from '@/domains/survey/createSurvey.usecase'
+import { CreateSurvey } from '@/domains/survey/entities/CreateSurvey'
 import type { FetchSurvey } from '@/domains/survey/fetchSurvey.usecase'
 import type { SurveyRepository } from '@/domains/survey/ports/survey.repository'
 
-export const createSurvey: CreateSurvey = {
-  label: 'les tests',
-  questions: [
-    {
-      label: 'Faut-il faire des tests ?',
-      answers: [
-        {
-          label: 'OUIIIII',
-          isGoodAnswer: true,
-        },
-        {
-          label: 'heuuu, connait pas',
-          isGoodAnswer: false,
-        },
-        {
-          label: 'test ?',
-          isGoodAnswer: false,
-        },
-        {
-          label: '...',
-          isGoodAnswer: false,
-        },
-      ],
-    },
-  ],
-}
+export const createSurvey = new CreateSurvey('les tests', [
+  {
+    label: 'Faut-il faire des tests ?',
+    answers: [
+      {
+        label: 'OUIIIII',
+        isGoodAnswer: true,
+      },
+      {
+        label: 'heuuu, connait pas',
+        isGoodAnswer: false,
+      },
+      {
+        label: 'test ?',
+        isGoodAnswer: false,
+      },
+      {
+        label: '...',
+        isGoodAnswer: false,
+      },
+    ],
+  },
+])
 
 export const lastQuestionAnswers: CreateQuestion = {
   label: 'Quelles tests en priorité ?',

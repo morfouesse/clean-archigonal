@@ -6,6 +6,7 @@ export class FetchSurveyPresenterImpl implements FetchSurveyPresenter {
   constructor(private readonly callback: (viewModel: FetchSurveyViewModel[]) => void) {}
 
   presente(surveys: FetchSurvey[]): void {
+    //TODO: a modifier dans usecase
     const surveysViewModel: FetchSurveyViewModel[] = surveys
       .filter((survey) => survey.state === SurveyState.IN_PROGRESS)
       // on enlève l'attribut state

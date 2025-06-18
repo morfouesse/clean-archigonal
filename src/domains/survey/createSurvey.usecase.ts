@@ -1,21 +1,16 @@
-import { deepEqual } from '@/services/utils'
-import type { CreateSurveyPresenter } from './ports/createSurvey.presenter'
+import type { CreateQuestion } from './entities/CreateQuestion'
+import { CreateSurvey } from './entities/CreateSurvey'
+import { CreateQuestionMapper } from './mappers/CreateQuestion.mapper'
+import type { CreateQuestionViewModel, CreateSurveyPresenter } from './ports/createSurvey.presenter'
 import type { SurveyRepository } from './ports/survey.repository'
 export interface CreateAnswer {
   label: string
   isGoodAnswer: boolean
 }
-export interface CreateQuestion {
-  label: string
-  answers: CreateAnswer[]
-}
-export interface CreateSurvey {
-  label: string
-  questions: CreateQuestion[]
-}
 
 export class CreateSurveyUsecase {
   private readonly _surveyRepository: SurveyRepository
+  private readonly createQuestionMapper: CreateQuestionMapper = new CreateQuestionMapper()
 
   constructor(surveyRepository: SurveyRepository) {
     this._surveyRepository = surveyRepository
@@ -23,17 +18,29 @@ export class CreateSurveyUsecase {
 
   execute(
     createSurveyPresenter: CreateSurveyPresenter,
-    createSurvey: CreateSurvey,
-    lastQuestionAnswers: CreateQuestion,
+    surveyName: string,
+    questionsAndAnswersVm: CreateQuestionViewModel[],
+    lastQuestionAnswersVm: CreateQuestionViewModel,
+    event: SubmitEvent,
   ): void {
-    const isNotSameQuestionAnswers = !deepEqual(
-      createSurvey.questions[createSurvey.questions.length - 1],
-      lastQuestionAnswers,
-    )
-    if (isNotSameQuestionAnswers) {
-      createSurvey.questions = [...createSurvey.questions, lastQuestionAnswers]
+    let isFormValid = true
+
+    const lastQuestionAnswers: CreateQuestion =
+      this.createQuestionMapper.mapCreateQuestionVmToCreateQuestion(lastQuestionAnswersVm)
+
+    if (lastQuestionAnswers.formHaveCharacters(surveyName)) {
+      event.preventDefault()
+
+      const questionsAndAnswers: CreateQuestion[] =
+        this.createQuestionMapper.mapCreateQuestionsVmToCreateQuestions(questionsAndAnswersVm)
+
+      const createSurvey = new CreateSurvey(surveyName, questionsAndAnswers)
+      createSurvey.addLastQuestion(lastQuestionAnswers)
+      this._surveyRepository.createSurvey(createSurvey)
+    } else {
+      isFormValid = false
     }
-    this._surveyRepository.createSurvey(createSurvey)
-    createSurveyPresenter.presente()
+
+    createSurveyPresenter.presente(isFormValid)
   }
 }

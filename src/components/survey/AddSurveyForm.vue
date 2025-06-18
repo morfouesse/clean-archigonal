@@ -24,7 +24,7 @@
 import { ref } from 'vue'
 import QuestionAndAnswersForm from './QuestionAndAnswersForm.vue'
 
-const surveyName = ref<string>()
+const surveyName = ref<string>('')
 </script>
 <style scoped>
 h1 {
