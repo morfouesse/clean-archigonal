@@ -6,7 +6,7 @@ export class CreateQuestion {
     private _answers: CreateAnswer[],
   ) {}
 
-  public formHaveCharacters(surveyName: string): boolean {
+  public HaveCharacters(surveyName: string): boolean {
     return surveyName.length > 0 && this.answers.every((answer) => answer.label.length > 0)
   }
 

@@ -14,14 +14,14 @@ export class CreateQuestionUsecase {
   ): void {
     let isFormValid = true
 
-    const question: CreateQuestion =
+    const nextQuestion: CreateQuestion =
       this.createQuestionMapper.mapCreateQuestionVmToCreateQuestion(nextQuestionVm)
 
     const questionsAndAnswers: CreateQuestion[] =
       this.createQuestionMapper.mapCreateQuestionsVmToCreateQuestions(questionsAndAnswersVm)
 
-    if (question.formHaveCharacters(surveyName)) {
-      const questionsAndAnswersWithLastQuestion = [...questionsAndAnswers, question]
+    if (nextQuestion.HaveCharacters(surveyName)) {
+      const questionsAndAnswersWithLastQuestion = [...questionsAndAnswers, nextQuestion]
 
       const newEmptyQuestion = new CreateQuestion('', [
         { label: '', isGoodAnswer: false },
@@ -37,7 +37,7 @@ export class CreateQuestionUsecase {
       )
     } else {
       isFormValid = false
-      nextQuestionPresenter.presente(question, questionsAndAnswers, isFormValid)
+      nextQuestionPresenter.presente(nextQuestion, questionsAndAnswers, isFormValid)
     }
   }
 }
