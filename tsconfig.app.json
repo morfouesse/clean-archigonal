@@ -5,7 +5,7 @@
     "noImplicitAny": false,
     "allowJs": true,
 
-    "target": "ES2024",
+    "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
     "lib": ["ES2024", "DOM", "DOM.Iterable"],
@@ -26,6 +26,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "types": ["vite/client"],
     "esModuleInterop": true,
     "experimentalDecorators": true
   },

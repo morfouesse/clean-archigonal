@@ -1,13 +1,16 @@
 import { FetchSurveyPresenterImpl } from '@/domains/survey/adapters/fetchSurvey.presenter.impl'
 import { FetchSurveyUsecase } from '@/domains/survey/fetchSurvey.usecase'
 import type { FetchSurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
-import { expect, it } from 'vitest'
+import { expect, it, vi } from 'vitest'
 import { SurveyRepositoryMock } from './adapters/survey.repository.mock'
 
+const surveysMock = new SurveyRepositoryMock()
+vi.mock('@/domains/survey/adapters/survey.repository.fetch.ts', () => ({
+  getSurveys: vi.fn(() => surveysMock.getSurveys()),
+}))
 it('Get survey list', async () => {
   //GIVEN
-  const surveysMock = new SurveyRepositoryMock()
-  const fetchSurveyUsecase = new FetchSurveyUsecase(surveysMock)
+  const fetchSurveyUsecase = new FetchSurveyUsecase()
   const expected: FetchSurveyViewModel[] = [
     {
       label: 'les tests',

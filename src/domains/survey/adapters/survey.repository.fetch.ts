@@ -1,4 +1,4 @@
-import type { CreateSurvey } from '../createSurvey.usecase'
+import type { CreateSurvey } from '../entities/CreateSurvey'
 import type { FetchSurvey } from '../fetchSurvey.usecase'
 import type { SurveyRepository } from '../ports/survey.repository'
 

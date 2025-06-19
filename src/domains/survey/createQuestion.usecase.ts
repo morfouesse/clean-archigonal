@@ -14,11 +14,9 @@ export class CreateQuestionUsecase {
   ): void {
     const nextQuestion: CreateQuestion =
       this.createQuestionMapper.mapCreateQuestionVmToCreateQuestion(nextQuestionVm)
-
-    const questionsAndAnswers: CreateQuestion[] =
-      this.createQuestionMapper.mapCreateQuestionsVmToCreateQuestions(questionsAndAnswersVm)
-
     if (nextQuestion.HaveCharacters(surveyName)) {
+      const questionsAndAnswers: CreateQuestion[] =
+        this.createQuestionMapper.mapCreateQuestionsVmToCreateQuestions(questionsAndAnswersVm)
       const questionsAndAnswersWithLastQuestion = [...questionsAndAnswers, nextQuestion]
 
       const newEmptyQuestion = new CreateQuestion('', [
