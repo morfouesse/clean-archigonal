@@ -21,5 +21,6 @@ export interface RedirectToHomeViewModel {
 }
 
 export interface CreateSurveyPresenter {
-  presente(isFormValid: boolean)
+  presenteSuccess(): void
+  presenteError(): void
 }

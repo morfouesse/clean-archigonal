@@ -10,11 +10,11 @@ export class CreateSurveyPresenterImpl implements CreateSurveyPresenter {
     private readonly onError?: (isFormValidVm: boolean) => void,
   ) {}
 
-  presente(isFormValid: boolean): void {
-    if (isFormValid) {
-      this.onSuccess?.({ route: Route.HOME })
-    } else {
-      this.onError?.(false)
-    }
+  presenteSuccess(): void {
+    this.onSuccess?.({ route: Route.HOME })
+  }
+
+  presenteError(): void {
+    this.onError?.(false)
   }
 }

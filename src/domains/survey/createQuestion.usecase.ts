@@ -12,8 +12,6 @@ export class CreateQuestionUsecase {
     nextQuestionVm: CreateQuestionViewModel,
     questionsAndAnswersVm: CreateQuestionViewModel[],
   ): void {
-    let isFormValid = true
-
     const nextQuestion: CreateQuestion =
       this.createQuestionMapper.mapCreateQuestionVmToCreateQuestion(nextQuestionVm)
 
@@ -30,14 +28,8 @@ export class CreateQuestionUsecase {
         { label: '', isGoodAnswer: false },
       ])
 
-      nextQuestionPresenter.presente(
-        newEmptyQuestion,
-        questionsAndAnswersWithLastQuestion,
-        isFormValid,
-      )
-    } else {
-      isFormValid = false
-      nextQuestionPresenter.presente(nextQuestion, questionsAndAnswers, isFormValid)
+      nextQuestionPresenter.presenteSuccess(newEmptyQuestion, questionsAndAnswersWithLastQuestion)
     }
+    nextQuestionPresenter.presenteError()
   }
 }

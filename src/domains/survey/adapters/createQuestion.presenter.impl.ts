@@ -15,21 +15,17 @@ export class CreateQuestionPresenterImpl implements CreateQuestionPresenter {
     private readonly onError?: (isFormValidVm: boolean) => void,
   ) {}
 
-  presente(
-    nextQuestion: CreateQuestion,
-    questionsAndAnswers: CreateQuestion[],
-    isFormValid: boolean,
-  ): void {
-    if (isFormValid) {
-      const nextQuestionVm =
-        this.createQuestionMapper.mapCreateQuestionToCreateQuestionVm(nextQuestion)
+  presenteSuccess(nextQuestion: CreateQuestion, questionsAndAnswers: CreateQuestion[]): void {
+    const nextQuestionVm =
+      this.createQuestionMapper.mapCreateQuestionToCreateQuestionVm(nextQuestion)
 
-      const questionsAndAnswersVm: CreateQuestionViewModel[] =
-        this.createQuestionMapper.mapCreateQuestionsToCreateQuestionsVm(questionsAndAnswers)
+    const questionsAndAnswersVm: CreateQuestionViewModel[] =
+      this.createQuestionMapper.mapCreateQuestionsToCreateQuestionsVm(questionsAndAnswers)
 
-      this.onSuccess?.(nextQuestionVm, questionsAndAnswersVm, true)
-    } else {
-      this.onError?.(false)
-    }
+    this.onSuccess?.(nextQuestionVm, questionsAndAnswersVm, true)
+  }
+
+  presenteError(): void {
+    this.onError?.(false)
   }
 }

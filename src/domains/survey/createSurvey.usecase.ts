@@ -23,8 +23,6 @@ export class CreateSurveyUsecase {
     lastQuestionAnswersVm: CreateQuestionViewModel,
     event: SubmitEvent,
   ): void {
-    let isFormValid = true
-
     const lastQuestionAnswers: CreateQuestion =
       this.createQuestionMapper.mapCreateQuestionVmToCreateQuestion(lastQuestionAnswersVm)
 
@@ -37,10 +35,8 @@ export class CreateSurveyUsecase {
       const createSurvey = new CreateSurvey(surveyName, questionsAndAnswers)
       createSurvey.addLastQuestion(lastQuestionAnswers)
       this._surveyRepository.createSurvey(createSurvey)
-    } else {
-      isFormValid = false
+      createSurveyPresenter.presenteSuccess()
     }
-
-    createSurveyPresenter.presente(isFormValid)
+    createSurveyPresenter.presenteError()
   }
 }
