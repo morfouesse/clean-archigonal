@@ -107,11 +107,16 @@ const haveSurveyAndQuestion = computed(() => surveyName && nextQuestion.value.la
 const handleNextQuestion = (): void => {
   const createQuestionUsecase = new CreateQuestionUsecase()
   createQuestionUsecase.execute(
-    new CreateQuestionPresenterImpl((nextQuestionVm, questionsAndAnswersVm, isFormValidVm) => {
-      nextQuestion.value = nextQuestionVm
-      questionsAndAnswers.value = questionsAndAnswersVm
-      isFormValid.value = isFormValidVm
-    }),
+    new CreateQuestionPresenterImpl(
+      (nextQuestionVm, questionsAndAnswersVm, isFormValidVm) => {
+        nextQuestion.value = nextQuestionVm
+        questionsAndAnswers.value = questionsAndAnswersVm
+        isFormValid.value = isFormValidVm
+      },
+      (isFormValidVm) => {
+        isFormValid.value = isFormValidVm
+      },
+    ),
     surveyName,
     nextQuestion.value,
     questionsAndAnswers.value,

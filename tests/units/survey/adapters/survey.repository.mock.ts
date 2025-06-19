@@ -1,5 +1,5 @@
 import { SurveyState } from '@/domains/survey/adapters/survey.repository.fetch'
-import type { CreateQuestion } from '@/domains/survey/createSurvey.usecase'
+import { CreateQuestion } from '@/domains/survey/entities/CreateQuestion'
 import { CreateSurvey } from '@/domains/survey/entities/CreateSurvey'
 import type { FetchSurvey } from '@/domains/survey/fetchSurvey.usecase'
 import type { SurveyRepository } from '@/domains/survey/ports/survey.repository'
@@ -28,9 +28,9 @@ export const createSurvey = new CreateSurvey('les tests', [
   },
 ])
 
-export const lastQuestionAnswers: CreateQuestion = {
-  label: 'Quelles tests en priorité ?',
-  answers: [
+export const lastQuestionAnswers: CreateQuestion = new CreateQuestion(
+  'Quelles tests en priorité ?',
+  [
     {
       label: 'les tests unitaires',
       isGoodAnswer: true,
@@ -48,7 +48,7 @@ export const lastQuestionAnswers: CreateQuestion = {
       isGoodAnswer: true,
     },
   ],
-}
+)
 export class SurveyRepositoryMock implements SurveyRepository {
   private readonly _surveys: FetchSurvey[] = [
     {

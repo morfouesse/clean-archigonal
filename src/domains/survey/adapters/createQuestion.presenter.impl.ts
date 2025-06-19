@@ -7,11 +7,12 @@ export class CreateQuestionPresenterImpl implements CreateQuestionPresenter {
   private readonly createQuestionMapper: CreateQuestionMapper = new CreateQuestionMapper()
 
   constructor(
-    private readonly callback: (
+    private readonly onSuccess?: (
       nextQuestionVm: CreateQuestionViewModel,
       questionsAndAnswersVm: CreateQuestionViewModel[],
       isFormValidVm: boolean,
     ) => void,
+    private readonly onError?: (isFormValidVm: boolean) => void,
   ) {}
 
   presente(
@@ -19,12 +20,16 @@ export class CreateQuestionPresenterImpl implements CreateQuestionPresenter {
     questionsAndAnswers: CreateQuestion[],
     isFormValid: boolean,
   ): void {
-    const nextQuestionVm =
-      this.createQuestionMapper.mapCreateQuestionToCreateQuestionVm(nextQuestion)
+    if (isFormValid) {
+      const nextQuestionVm =
+        this.createQuestionMapper.mapCreateQuestionToCreateQuestionVm(nextQuestion)
 
-    const questionsAndAnswersVm: CreateQuestionViewModel[] =
-      this.createQuestionMapper.mapCreateQuestionsToCreateQuestionsVm(questionsAndAnswers)
+      const questionsAndAnswersVm: CreateQuestionViewModel[] =
+        this.createQuestionMapper.mapCreateQuestionsToCreateQuestionsVm(questionsAndAnswers)
 
-    this.callback(nextQuestionVm, questionsAndAnswersVm, isFormValid)
+      this.onSuccess?.(nextQuestionVm, questionsAndAnswersVm, true)
+    } else {
+      this.onError?.(false)
+    }
   }
 }

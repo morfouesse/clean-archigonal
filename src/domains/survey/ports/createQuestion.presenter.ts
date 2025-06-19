@@ -5,5 +5,5 @@ export interface CreateQuestionPresenter {
     nextQuestion: CreateQuestion,
     questionsAndAnswers: CreateQuestion[],
     isFormValid: boolean,
-  )
+  ): void
 }
