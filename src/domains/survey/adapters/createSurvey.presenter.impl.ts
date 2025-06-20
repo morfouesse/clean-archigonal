@@ -1,4 +1,4 @@
-import { Route } from '@/router'
+import { Route } from '@/domains/router/survey'
 import type {
   CreateSurveyPresenter,
   RedirectToHomeViewModel,

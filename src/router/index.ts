@@ -1,15 +1,7 @@
 /// <reference types="vite/types/importMeta.d.ts" />
 
+import { Path, Route } from '@/domains/router/survey'
 import { createRouter, createWebHistory } from 'vue-router'
-
-export enum Route {
-  HOME = 'home',
-  ADD_SURVEY = 'addSurvey',
-}
-
-export enum Path {
-  ADD_SURVEY = '/addSurvey',
-}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL || '/'),

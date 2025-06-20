@@ -19,6 +19,7 @@ test.describe('Survey', () => {
     await formFill(page)
 
     await page.getByRole('button', { name: 'Crée la prochaine question' }).click()
+    await expect(page.getByText('Tout les champs sont obligatoires', { exact: true })).toBeHidden()
 
     await formFill(page)
     await page.locator('input[type="checkbox"]').last().check()

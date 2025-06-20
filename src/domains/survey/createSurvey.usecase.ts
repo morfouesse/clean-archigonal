@@ -1,3 +1,4 @@
+import { SurveyRepositoryFetch } from './adapters/survey.repository.fetch'
 import type { CreateQuestion } from './entities/CreateQuestion'
 import { CreateSurvey } from './entities/CreateSurvey'
 import { CreateQuestionMapper } from './mappers/CreateQuestion.mapper'
@@ -9,12 +10,8 @@ export interface CreateAnswer {
 }
 
 export class CreateSurveyUsecase {
-  private readonly _surveyRepository: SurveyRepository
+  private readonly _surveyRepository: SurveyRepository = new SurveyRepositoryFetch()
   private readonly createQuestionMapper: CreateQuestionMapper = new CreateQuestionMapper()
-
-  constructor(surveyRepository: SurveyRepository) {
-    this._surveyRepository = surveyRepository
-  }
 
   execute(
     createSurveyPresenter: CreateSurveyPresenter,
@@ -23,12 +20,11 @@ export class CreateSurveyUsecase {
     lastQuestionAnswersVm: CreateQuestionViewModel,
     event: SubmitEvent,
   ): void {
+    event.preventDefault()
     const lastQuestionAnswers: CreateQuestion =
       this.createQuestionMapper.mapCreateQuestionVmToCreateQuestion(lastQuestionAnswersVm)
 
     if (lastQuestionAnswers.HaveCharacters(surveyName)) {
-      event.preventDefault()
-
       const questionsAndAnswers: CreateQuestion[] =
         this.createQuestionMapper.mapCreateQuestionsVmToCreateQuestions(questionsAndAnswersVm)
 
@@ -36,7 +32,8 @@ export class CreateSurveyUsecase {
       createSurvey.addLastQuestion(lastQuestionAnswers)
       this._surveyRepository.createSurvey(createSurvey)
       createSurveyPresenter.presenteSuccess()
+    } else {
+      createSurveyPresenter.presenteError()
     }
-    createSurveyPresenter.presenteError()
   }
 }

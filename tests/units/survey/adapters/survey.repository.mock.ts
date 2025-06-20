@@ -1,54 +1,7 @@
 import { SurveyState } from '@/domains/survey/adapters/survey.repository.fetch'
-import { CreateQuestion } from '@/domains/survey/entities/CreateQuestion'
-import { CreateSurvey } from '@/domains/survey/entities/CreateSurvey'
 import type { FetchSurvey } from '@/domains/survey/fetchSurvey.usecase'
 import type { SurveyRepository } from '@/domains/survey/ports/survey.repository'
 
-export const createSurvey = new CreateSurvey('les tests', [
-  {
-    label: 'Faut-il faire des tests ?',
-    answers: [
-      {
-        label: 'OUIIIII',
-        isGoodAnswer: true,
-      },
-      {
-        label: 'heuuu, connait pas',
-        isGoodAnswer: false,
-      },
-      {
-        label: 'test ?',
-        isGoodAnswer: false,
-      },
-      {
-        label: '...',
-        isGoodAnswer: false,
-      },
-    ],
-  },
-])
-
-export const lastQuestionAnswers: CreateQuestion = new CreateQuestion(
-  'Quelles tests en priorité ?',
-  [
-    {
-      label: 'les tests unitaires',
-      isGoodAnswer: true,
-    },
-    {
-      label: 'les tests E2E',
-      isGoodAnswer: false,
-    },
-    {
-      label: 'les tests de composants',
-      isGoodAnswer: false,
-    },
-    {
-      label: "les tests d'accesibilités",
-      isGoodAnswer: true,
-    },
-  ],
-)
 export class SurveyRepositoryMock implements SurveyRepository {
   private readonly _surveys: FetchSurvey[] = [
     {

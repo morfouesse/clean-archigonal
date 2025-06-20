@@ -27,7 +27,8 @@ export class CreateQuestionUsecase {
       ])
 
       nextQuestionPresenter.presenteSuccess(newEmptyQuestion, questionsAndAnswersWithLastQuestion)
+    } else {
+      nextQuestionPresenter.presenteError()
     }
-    nextQuestionPresenter.presenteError()
   }
 }

@@ -1,7 +1,7 @@
+import { Route } from '@/domains/router/survey'
 import { CreateSurveyPresenterImpl } from '@/domains/survey/adapters/createSurvey.presenter.impl'
 import { CreateSurveyUsecase } from '@/domains/survey/createSurvey.usecase'
 import type { RedirectToHomeViewModel } from '@/domains/survey/ports/createSurvey.presenter'
-import { Route } from '@/router'
 import { beforeEach, describe, expect, it } from 'vitest'
 import {
   createQuestionsWithLastQuestionVm,
@@ -9,14 +9,12 @@ import {
   lastSurveyQuestionVm,
   surveyName,
 } from './adapters/survey.mock'
-import { SurveyRepositoryMock } from './adapters/survey.repository.mock'
 
 let createSurveyUsecase: CreateSurveyUsecase
 
 describe('create survey', () => {
   beforeEach(() => {
-    const surveyMock = new SurveyRepositoryMock()
-    createSurveyUsecase = new CreateSurveyUsecase(surveyMock)
+    createSurveyUsecase = new CreateSurveyUsecase()
   })
   it('should create survey if last question have no empty inputs', () => {
     //GIVEN

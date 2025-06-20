@@ -9,7 +9,8 @@
   </v-app-bar>
 </template>
 <script setup lang="ts">
-import router, { Path } from '@/router'
+import { Path } from '@/domains/router/survey'
+import router from '@/router'
 
 const goToCreateSurvey = (): void => {
   router.push(Path.ADD_SURVEY)
