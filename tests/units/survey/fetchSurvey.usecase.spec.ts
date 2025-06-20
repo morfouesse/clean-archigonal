@@ -5,9 +5,14 @@ import { expect, it, vi } from 'vitest'
 import { SurveyRepositoryMock } from './adapters/survey.repository.mock'
 
 const surveysMock = new SurveyRepositoryMock()
-vi.mock('@/domains/survey/adapters/survey.repository.fetch.ts', () => ({
-  getSurveys: vi.fn(() => surveysMock.getSurveys()),
-}))
+//besoin de faire ainsi car on a un import pour une enum dans un autre fichier
+vi.mock(import('@/domains/survey/adapters/survey.repository.fetch'), async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...actual,
+    getSurveys: vi.fn(() => surveysMock.getSurveys()),
+  }
+})
 it('Get survey list', async () => {
   //GIVEN
   const fetchSurveyUsecase = new FetchSurveyUsecase()
