@@ -21,7 +21,7 @@ export class CreateSurveyUsecase {
     event: SubmitEvent,
   ): void {
     event.preventDefault()
-    const lastQuestionAnswers: CreateQuestion =
+    const lastQuestionAnswers =
       this.createQuestionMapper.mapCreateQuestionVmToCreateQuestion(lastQuestionAnswersVm)
 
     if (lastQuestionAnswers.HaveCharacters(surveyName)) {
