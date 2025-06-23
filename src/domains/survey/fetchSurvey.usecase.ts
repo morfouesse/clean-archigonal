@@ -1,4 +1,4 @@
-import { SurveyRepositoryFetch, type SurveyState } from './adapters/survey.repository.fetch'
+import { type SurveyState } from './adapters/survey.repository.fetch'
 import type { FetchSurveyPresenter } from './ports/fetchSurvey.presenter'
 import type { SurveyRepository } from './ports/survey.repository'
 
@@ -16,7 +16,7 @@ export interface FetchSurvey {
 }
 
 export class FetchSurveyUsecase {
-  private readonly _surveyRepository: SurveyRepository = new SurveyRepositoryFetch()
+  constructor(private readonly _surveyRepository: SurveyRepository) {}
 
   async execute(fetchSurveyPresenter: FetchSurveyPresenter) {
     const surveys = await this._surveyRepository.getSurveys()

@@ -4,8 +4,8 @@ import type { FetchSurveyViewModel } from '@/domains/survey/ports/fetchSurvey.pr
 import { expect, it, vi } from 'vitest'
 import { SurveyRepositoryMock } from './adapters/survey.repository.mock'
 
-const surveysMock = new SurveyRepositoryMock()
 //besoin de faire ainsi car on a un import pour une enum dans un autre fichier
+const surveysMock = new SurveyRepositoryMock()
 vi.mock(import('@/domains/survey/adapters/survey.repository.fetch'), async (importOriginal) => {
   const actual = await importOriginal()
   return {
@@ -15,7 +15,7 @@ vi.mock(import('@/domains/survey/adapters/survey.repository.fetch'), async (impo
 })
 it('Get survey list', async () => {
   //GIVEN
-  const fetchSurveyUsecase = new FetchSurveyUsecase()
+  const fetchSurveyUsecase = new FetchSurveyUsecase(surveysMock)
   const expected: FetchSurveyViewModel[] = [
     {
       label: 'les tests',

@@ -1,4 +1,3 @@
-import { SurveyRepositoryFetch } from './adapters/survey.repository.fetch'
 import type { CreateQuestion } from './entities/CreateQuestion'
 import { CreateSurvey } from './entities/CreateSurvey'
 import { CreateQuestionMapper } from './mappers/CreateQuestion.mapper'
@@ -10,8 +9,8 @@ export interface CreateAnswer {
 }
 
 export class CreateSurveyUsecase {
-  private readonly _surveyRepository: SurveyRepository = new SurveyRepositoryFetch()
   private readonly createQuestionMapper: CreateQuestionMapper = new CreateQuestionMapper()
+  constructor(private readonly _surveyRepository: SurveyRepository) {}
 
   execute(
     createSurveyPresenter: CreateSurveyPresenter,

@@ -9,12 +9,14 @@ import {
   lastSurveyQuestionVm,
   surveyName,
 } from './adapters/survey.mock'
+import { SurveyRepositoryMock } from './adapters/survey.repository.mock'
 
 let createSurveyUsecase: CreateSurveyUsecase
 
 describe('create survey', () => {
   beforeEach(() => {
-    createSurveyUsecase = new CreateSurveyUsecase()
+    const surveysMock = new SurveyRepositoryMock()
+    createSurveyUsecase = new CreateSurveyUsecase(surveysMock)
   })
   it('should create survey if last question have no empty inputs', () => {
     //GIVEN

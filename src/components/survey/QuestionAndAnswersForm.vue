@@ -72,6 +72,7 @@
 <script setup lang="ts">
 import { CreateQuestionPresenterImpl } from '@/domains/survey/adapters/createQuestion.presenter.impl'
 import { CreateSurveyPresenterImpl } from '@/domains/survey/adapters/createSurvey.presenter.impl'
+import { SurveyRepositoryFetch } from '@/domains/survey/adapters/survey.repository.fetch'
 import { CreateQuestionUsecase } from '@/domains/survey/createQuestion.usecase'
 import { CreateSurveyUsecase } from '@/domains/survey/createSurvey.usecase'
 
@@ -122,7 +123,7 @@ const handleNextQuestion = (): void => {
   )
 }
 const createSurvey = async (event: SubmitEvent): Promise<void> => {
-  const createSurveyUsecase = new CreateSurveyUsecase()
+  const createSurveyUsecase = new CreateSurveyUsecase(new SurveyRepositoryFetch())
   createSurveyUsecase.execute(
     new CreateSurveyPresenterImpl(
       (redirectToHomeVm: RedirectToHomeViewModel) => {

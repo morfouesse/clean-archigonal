@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import SurveyCard from '@/components/survey/SurveyCard.vue'
 import { FetchSurveyPresenterImpl } from '@/domains/survey/adapters/fetchSurvey.presenter.impl'
+import { SurveyRepositoryFetch } from '@/domains/survey/adapters/survey.repository.fetch'
 import { FetchSurveyUsecase } from '@/domains/survey/fetchSurvey.usecase'
 import type { FetchSurveyViewModel } from '@/domains/survey/ports/fetchSurvey.presenter'
 import { onMounted, ref } from 'vue'
@@ -12,7 +13,7 @@ import { onMounted, ref } from 'vue'
 const surveys = ref<FetchSurveyViewModel[]>([])
 
 const fetchSurvey = async (): Promise<void> => {
-  const fetchSurveyUsecase = new FetchSurveyUsecase()
+  const fetchSurveyUsecase = new FetchSurveyUsecase(new SurveyRepositoryFetch())
   await fetchSurveyUsecase.execute(
     new FetchSurveyPresenterImpl((viewModel) => {
       surveys.value = viewModel
